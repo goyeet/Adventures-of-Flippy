@@ -11,7 +11,7 @@ class Load extends Phaser.Scene {
         this.load.on('progress', (value) => {
             loadingBar.clear();                                 // reset fill/line style
             loadingBar.fillStyle(0xFFFFFF, 1);                  // (color, alpha)
-            loadingBar.fillRect(0, centerY, w * value, 5);  // (x, y, w, h)
+            loadingBar.fillRect(0, centerY, gameWidth * value, 5);  // (x, y, w, h)
         });
         this.load.on('complete', () => {
             loadingBar.destroy();
@@ -19,7 +19,10 @@ class Load extends Phaser.Scene {
 
         this.load.path = './assets/';
         // load graphics assets
-        // this.load.image('paddle', 'img/paddle.png');
+        this.load.image('bubble', 'bubble.png');
+        this.load.image('oceanBg', 'OceanBackground.png');
+        this.load.image('turtle_idle', 'turtle.png');
+        this.load.image('turtle_flap', 'turtle_flap.png')
         
         // load audio assets
         // this.load.audio('beats', ['audio/beats.mp3']);
