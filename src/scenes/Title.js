@@ -16,8 +16,8 @@ class Title extends Phaser.Scene {
             padding: 5,
             fixedWidth: 0
         }
-        let title01 = this.add.text(centerX, centerY - textSpacer, 'Flip\'s Undersea Adventure', titleConfig).setOrigin(0.5);
-        let title02 = this.add.text(centerX, centerY - textSpacer, 'Flip\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
+        let title01 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5);
+        let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
        
         titleConfig.fontSize = '36px';
         this.add.text(centerX, centerY + textSpacer, 'Press SPACE to Start', titleConfig).setOrigin(0.5);

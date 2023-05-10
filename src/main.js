@@ -20,7 +20,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            // debug: true,
             gravity: {
                 x: 0,
                 y: 0
@@ -39,7 +39,7 @@ let centerY = game.config.height/2;
 let gameWidth = game.config.width;
 let gameHeight = game.config.height;
 let level;
-let highScore;
+let highScore = 0;
 let newHighScore = false;
 let cursors;
 let keySPACE;

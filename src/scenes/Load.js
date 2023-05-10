@@ -22,7 +22,11 @@ class Load extends Phaser.Scene {
         this.load.image('bubble', 'bubble.png');
         this.load.image('oceanBg', 'OceanBackground.png');
         this.load.image('turtle_idle', 'turtle.png');
-        this.load.image('turtle_flap', 'turtle_flap.png')
+        this.load.image('turtle_flap', 'turtle_flap.png');
+        this.load.image('grayFish', 'grayFish.png');
+        this.load.image('blueFish', 'blueFish.png');
+        this.load.image('pinkFish', 'pinkFish.png');
+        this.load.image('orangeFish', 'orangeFish.png');
         
         // load audio assets
         // this.load.audio('beats', ['audio/beats.mp3']);
