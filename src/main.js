@@ -1,6 +1,6 @@
 // Name: Gordon Yee
 // Title: Flip's Undersea Adventure
-// Approximate Time Spent on Project: 3 hrs
+// Approximate Time Spent on Project: 8 hrs
 // Creative Tilt Justification:
 
 // Texture Atlas Tutorial
@@ -27,7 +27,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Title, Play, /* GameOver */ ],
+    scene: [ Load, Title, Play, /* Credits */ ],
     fps: { forceSetTimeOut: true, target: 60 } // Necessary to limit fps on devices with a refresh rate > 60Hz
 }
 
@@ -38,7 +38,7 @@ let centerX = game.config.width/2;
 let centerY = game.config.height/2;
 let gameWidth = game.config.width;
 let gameHeight = game.config.height;
-let level;
+let currentScore = 0;
 let highScore = 0;
 let newHighScore = false;
 let cursors;

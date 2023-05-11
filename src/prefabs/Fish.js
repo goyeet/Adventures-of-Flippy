@@ -6,7 +6,8 @@ class Fish extends Phaser.Physics.Arcade.Sprite {
         this.parentScene.physics.add.existing(this);
         this.setImmovable();
         this.moveSpeed = 5;
-        this.newFish = true;                 // custom property to control fish spawning
+        this.newFish = true;                    // custom property to control fish spawning
+        this.incrementScore = true;            // ensure score is updated only once per fish
     }
     
     update() {
@@ -20,8 +21,14 @@ class Fish extends Phaser.Physics.Arcade.Sprite {
         }
 
         // destroy fish if it reaches the left edge of the screen
-        if(this.x < -this.width) {
+        if (this.x < -this.width) {
+            // console.log('destroyed');
             this.destroy();
+        }
+
+        if (this.x < this.parentScene.flippy.x && this.incrementScore) {
+            currentScore += 1;
+            this.incrementScore = false;
         }
     }
 }

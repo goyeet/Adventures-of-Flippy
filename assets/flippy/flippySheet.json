@@ -1,0 +1,207 @@
+{
+  "frames": {
+    "turtle1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 50
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 50
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle2.png": {
+      "frame": {
+        "x": 80,
+        "y": 0,
+        "w": 80,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle3.png": {
+      "frame": {
+        "x": 160,
+        "y": 0,
+        "w": 80,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle4.png": {
+      "frame": {
+        "x": 240,
+        "y": 0,
+        "w": 80,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle5.png": {
+      "frame": {
+        "x": 320,
+        "y": 0,
+        "w": 80,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle6.png": {
+      "frame": {
+        "x": 400,
+        "y": 0,
+        "w": 80,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle8.png": {
+      "frame": {
+        "x": 80,
+        "y": 0,
+        "w": 80,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "turtle7.png": {
+      "frame": {
+        "x": 240,
+        "y": 0,
+        "w": 80,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 80,
+        "h": 50
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "flippySheet.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 480,
+      "h": 50
+    },
+    "scale": 1
+  }
+}

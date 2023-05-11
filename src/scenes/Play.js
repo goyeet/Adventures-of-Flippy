@@ -33,7 +33,7 @@ class Play extends Phaser.Scene {
           });
 
         // set up player player (physics sprite) and set properties
-        this.player = new Flippy(this, 64, centerY, 'turtle_idle');
+        this.flippy = new Flippy(this, 64, centerY, 'turtle_idle');
 
         // set up barrier group
         this.fishGroup = this.add.group({
@@ -53,6 +53,17 @@ class Play extends Phaser.Scene {
             loop: true
         }); */
 
+        let smallTextConfig = {
+            fontFamily: 'Impact',
+            fontSize: '48px',
+            color: '#FFFFFF',
+            align: 'right',
+            padding: 5,
+            fixedWidth: 0
+        }
+        // Current SCORE
+        this.currentScoreUI = this.add.text(gameWidth - textSpacer, textSpacer/2 , currentScore, smallTextConfig).setOrigin(1,0);
+
         // set up cursor keys
         cursors = this.input.keyboard.createCursorKeys();
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -61,16 +72,21 @@ class Play extends Phaser.Scene {
     // create new fish and add them to existing fish group
     spawnFish() {
         var spawnY = Phaser.Math.Between(32, gameHeight-32);
-        var color = Phaser.Math.Between(0, 4);
+        var color = Phaser.Math.Between(0, 3 );
         const fishes = ['grayFish', 'pinkFish', 'blueFish', 'orangeFish'];
-        let fish = new Fish(this, gameWidth + 32, spawnY, fishes[color]);
+        let fish = new Fish(this, gameWidth, spawnY, fishes[color]);
+        // console.log('spawned: ' + fishes[color]);
         this.fishGroup.add(fish);
     }
 
     update() {
         if (!this.gameOver) {
             this.oceanBg.tilePositionX += 1;
-            this.player.update();
+
+            this.flippy.play('swim', true);
+            this.flippy.update();
+
+            this.currentScoreUI.text = currentScore;
         }
 
     }

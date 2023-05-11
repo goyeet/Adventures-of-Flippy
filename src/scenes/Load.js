@@ -21,13 +21,15 @@ class Load extends Phaser.Scene {
         // load graphics assets
         this.load.image('bubble', 'bubble.png');
         this.load.image('oceanBg', 'OceanBackground.png');
-        this.load.image('turtle_idle', 'turtle.png');
-        this.load.image('turtle_flap', 'turtle_flap.png');
+        // this.load.image('turtle_idle', 'turtle.png');
         this.load.image('grayFish', 'grayFish.png');
         this.load.image('blueFish', 'blueFish.png');
         this.load.image('pinkFish', 'pinkFish.png');
         this.load.image('orangeFish', 'orangeFish.png');
-        
+
+        // load turtle texture atlas
+        this.load.atlas('flippy', 'flippy/flippySheet.png', 'flippy/flippySheet.json');
+
         // load audio assets
         // this.load.audio('beats', ['audio/beats.mp3']);
         
@@ -41,6 +43,19 @@ class Load extends Phaser.Scene {
         } else {
             console.log('Local storage not supported');
         }
+
+        // define animations
+        this.anims.create({
+            key: 'swim',
+            frames: this.anims.generateFrameNames('flippy', {
+                prefix: 'turtle',
+                start: 1,
+                end: 6,
+                suffix: '.png'
+            }),
+            frameRate: 15,
+            repeat: -1      // loop animation
+        });
 
         // go to Title scene
         this.scene.start('titleScene');
