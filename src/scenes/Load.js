@@ -29,6 +29,7 @@ class Load extends Phaser.Scene {
 
         // load turtle texture atlas
         this.load.atlas('flippy', 'flippy/flippySheet.png', 'flippy/flippySheet.json');
+        this.load.atlas('spaceBar', 'spaceBar/spaceBarSheet.png', 'spaceBar/spaceBarSheet.json');
 
         // load audio assets
         this.load.audio('bgMusic', ['audio/wondrous-waters.mp3']);
@@ -56,6 +57,18 @@ class Load extends Phaser.Scene {
                 suffix: '.png'
             }),
             frameRate: 15,
+            repeat: -1      // loop animation
+        });
+
+        this.anims.create({
+            key: 'space',
+            frames: this.anims.generateFrameNames('spaceBar', {
+                prefix: 'SpaceBar',
+                start: 1,
+                end: 2,
+                suffix: '.png'
+            }),
+            frameRate: 3,
             repeat: -1      // loop animation
         });
 

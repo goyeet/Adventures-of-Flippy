@@ -55,6 +55,8 @@ class Title extends Phaser.Scene {
         // check for SPACE bar input
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
             this.sound.play('select', {volume: 0.8});
+            this.bgMusic.stop();
+            bgMusicPlaying = false;
             this.scene.start('playScene');    
         }
     }

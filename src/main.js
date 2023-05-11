@@ -1,6 +1,6 @@
 // Name: Gordon Yee
 // Title: Flip's Undersea Adventure
-// Approximate Time Spent on Project: 16 hrs
+// Approximate Time Spent on Project: 18 hrs
 // Creative Tilt Justification:
 
 
@@ -44,7 +44,7 @@ let currentScore = 0;
 let highScore = 0;
 let newHighScore = false;
 let cursors;
-let keySPACE;
+let keySPACE, keyLEFT, keyRIGHT;
 let bgMusicPlaying = false;
 
 game.settings = {
