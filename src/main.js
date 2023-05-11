@@ -1,8 +1,10 @@
 // Name: Gordon Yee
 // Title: Flip's Undersea Adventure
-// Approximate Time Spent on Project: 8 hrs
+// Approximate Time Spent on Project: 16 hrs
 // Creative Tilt Justification:
 
+
+// Background Music: Wondrous Waters by Nullhertz
 // Texture Atlas Tutorial
 // bit.ly/42gY7CU
 
@@ -20,7 +22,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            // debug: true,
+            debug: true,
             gravity: {
                 x: 0,
                 y: 0
@@ -43,3 +45,9 @@ let highScore = 0;
 let newHighScore = false;
 let cursors;
 let keySPACE;
+let bgMusicPlaying = false;
+
+game.settings = {
+    fishSpeedCap: 15, // max speed fish can ramp up to
+    fishSpeed: 5,
+}

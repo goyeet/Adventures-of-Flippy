@@ -7,7 +7,7 @@ class Load extends Phaser.Scene {
     preload() {
         // loading bar
         // see: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/loader/
-        let loadingBar = this.add.graphics();
+        /* let loadingBar = this.add.graphics();
         this.load.on('progress', (value) => {
             loadingBar.clear();                                 // reset fill/line style
             loadingBar.fillStyle(0xFFFFFF, 1);                  // (color, alpha)
@@ -15,24 +15,26 @@ class Load extends Phaser.Scene {
         });
         this.load.on('complete', () => {
             loadingBar.destroy();
-        });
+        }); */
 
         this.load.path = './assets/';
         // load graphics assets
         this.load.image('bubble', 'bubble.png');
         this.load.image('oceanBg', 'OceanBackground.png');
         // this.load.image('turtle_idle', 'turtle.png');
-        this.load.image('grayFish', 'grayFish.png');
-        this.load.image('blueFish', 'blueFish.png');
-        this.load.image('pinkFish', 'pinkFish.png');
-        this.load.image('orangeFish', 'orangeFish.png');
+        this.load.image('grayFish', 'fish/grayFish.png');
+        this.load.image('blueFish', 'fish/blueFish.png');
+        this.load.image('pinkFish', 'fish/pinkFish.png');
+        this.load.image('orangeFish', 'fish/orangeFish.png');
 
         // load turtle texture atlas
         this.load.atlas('flippy', 'flippy/flippySheet.png', 'flippy/flippySheet.json');
 
         // load audio assets
-        // this.load.audio('beats', ['audio/beats.mp3']);
-        
+        this.load.audio('bgMusic', ['audio/wondrous-waters.mp3']);
+        this.load.audio('select', 'audio/sfx/mixkit-page-back-chime-1108.wav');
+        this.load.audio('chime', 'audio/sfx/mixkit-happy-bell-alert-601.wav');
+        this.load.audio('impact', 'audio/sfx/mixkit-impact-of-a-blow-2150.wav');
     }
 
     // Local Storage inspired by Paddle Parkour

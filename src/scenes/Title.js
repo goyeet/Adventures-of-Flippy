@@ -4,8 +4,18 @@ class Title extends Phaser.Scene {
     }
 
     create() {
+        // fade in from black
+        this.cameras.main.fadeIn(1000, 0, 0, 0);
+
         // place bg tile sprite
         this.oceanBg = this.add.tileSprite(0, 0, gameWidth, gameHeight, 'oceanBg').setOrigin(0, 0);
+
+        // start bg music
+        this.bgMusic = this.sound.add('bgMusic', { volume: 0.65, loop: true });
+        if (bgMusicPlaying === false) {
+            this.bgMusic.play();
+            bgMusicPlaying = true;
+        }
 
         // add title screen text
         let titleConfig = {
@@ -20,7 +30,7 @@ class Title extends Phaser.Scene {
         let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
        
         titleConfig.fontSize = '36px';
-        this.add.text(centerX, centerY + textSpacer, 'Press SPACE to Start', titleConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY + textSpacer, 'Press [SPACE] to Start', titleConfig).setOrigin(0.5);
 
         let smallTextConfig = {
             fontFamily: 'Impact',
@@ -44,6 +54,7 @@ class Title extends Phaser.Scene {
         this.oceanBg.tilePositionX += 1;
         // check for SPACE bar input
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+            this.sound.play('select', {volume: 0.8});
             this.scene.start('playScene');    
         }
     }

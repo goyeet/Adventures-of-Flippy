@@ -5,7 +5,7 @@ class Fish extends Phaser.Physics.Arcade.Sprite {
         this.parentScene.add.existing(this);    // add to existing scene, displayList, updateList
         this.parentScene.physics.add.existing(this);
         this.setImmovable();
-        this.moveSpeed = 5;
+        this.moveSpeed = game.settings.fishSpeed;
         this.newFish = true;                    // custom property to control fish spawning
         this.incrementScore = true;            // ensure score is updated only once per fish
     }
@@ -14,7 +14,7 @@ class Fish extends Phaser.Physics.Arcade.Sprite {
         this.x -= this.moveSpeed;
 
         // add new fish when existing fish hits center X
-        if (this.newFish && this.x < centerX) {
+        if (this.parentScene.flippyHit == false && this.newFish && this.x < centerX) {
             // (recursively) call parent scene method from this context
             this.parentScene.spawnFish();
             this.newFish = false;
@@ -26,8 +26,15 @@ class Fish extends Phaser.Physics.Arcade.Sprite {
             this.destroy();
         }
 
-        if (this.x < this.parentScene.flippy.x && this.incrementScore) {
+        // Flippy dodges fish successfuly
+        if (this.parentScene.flippyHit == false && this.x < this.parentScene.flippy.x && this.incrementScore) {
             currentScore += 1;
+            if ((currentScore % 5 == 0) && (game.settings.fishSpeed < game.settings.fishSpeedCap)) {
+                game.settings.fishSpeed += 1;
+                console.log('Speed Increase');
+            }
+            // play success sfx
+            this.parentScene.sound.play('chime', {volume: 0.4});
             this.incrementScore = false;
         }
     }
