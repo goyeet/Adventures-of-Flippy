@@ -18,10 +18,10 @@ class Load extends Phaser.Scene {
         }); */
 
         this.load.path = './assets/';
+        
         // load graphics assets
         this.load.image('bubble', 'bubble.png');
         this.load.image('oceanBg', 'OceanBackground.png');
-        // this.load.image('turtle_idle', 'turtle.png');
         this.load.image('grayFish', 'fish/grayFish.png');
         this.load.image('blueFish', 'fish/blueFish.png');
         this.load.image('pinkFish', 'fish/pinkFish.png');
@@ -41,7 +41,6 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-
         // define animations
         this.anims.create({
             key: 'swim',

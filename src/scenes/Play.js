@@ -102,11 +102,12 @@ class Play extends Phaser.Scene {
 
     // create new fish and add them to existing fish group
     spawnFish() {
-        var spawnY = Phaser.Math.Between(32, gameHeight-32);
-        var color = Phaser.Math.Between(0, 3 );
+        var minY = Phaser.Math.MinSub(this.flippy.y, 126, 0);
+        var maxY = Phaser.Math.MaxAdd(this.flippy.y, 126, gameHeight - 21);
+        var spawnY = Phaser.Math.Between(minY, maxY);
+        var color = Phaser.Math.Between(0, 3);
         const fishes = ['grayFish', 'pinkFish', 'blueFish', 'orangeFish'];
-        let fish = new Fish(this, gameWidth, spawnY, fishes[color]).setOrigin(0,0);
-        // console.log('spawned: ' + fishes[color]);
+        let fish = new Fish(this, gameWidth, spawnY, fishes[color]);
         this.fishGroup.add(fish);
     }
 
@@ -133,18 +134,18 @@ class Play extends Phaser.Scene {
 
             // Collision check
             if (!this.flippyHit) {
-                this.physics.world.collide(this.flippy, this.fishGroup, this.fishCollision, null, this);
+                this.physics.world.collide(this.flippy, this.fishGroup, this.collision, null, this);
+                if (this.flippy.body.blocked.down === true) {
+                    this.collision();
+                }
                 this.flippy.update();
             }
         }
 
         if (this.gameOver) {
-            // wait for player input to see what to do next
-
             // Restart play scene
             if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
                 this.sound.play('select', {volume: 0.8});
-                // stop background music
                 bgMusicPlaying = false;
                 this.bgMusic.stop();
                 this.scene.restart();
@@ -153,7 +154,6 @@ class Play extends Phaser.Scene {
             // Go to title scene
             if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
                 this.sound.play('select', {volume: 0.8});
-                // stop background music
                 bgMusicPlaying = false;
                 this.bgMusic.stop();
                 this.scene.start('titleScene');
@@ -162,7 +162,6 @@ class Play extends Phaser.Scene {
             // Go to credits scene
             if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
                 this.sound.play('select', {volume: 0.8});
-                // stop background music
                 bgMusicPlaying = false;
                 this.bgMusic.stop();
                 this.scene.start('creditsScene');
@@ -171,7 +170,7 @@ class Play extends Phaser.Scene {
 
     }
 
-    fishCollision() {
+    collision() {
         this.flippyHit = true;
         // shake camera on impact
         this.cameras.main.shake(40);

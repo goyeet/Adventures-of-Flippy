@@ -13,7 +13,6 @@ class Title extends Phaser.Scene {
         // start bg music
         this.bgMusic = this.sound.add('bgMusic', { volume: 0.65, loop: true });
         if (bgMusicPlaying === false) {
-            console.log('starting bgmusic from title');
             this.bgMusic.play();
             bgMusicPlaying = true;
         }
@@ -34,6 +33,7 @@ class Title extends Phaser.Scene {
             color: '#FFFFFF',
             align: 'right',
             padding: 5,
+            backgroundColor:'#041b36',
             fixedWidth: 0
         }
 
@@ -42,14 +42,18 @@ class Title extends Phaser.Scene {
 
         // Space bar to play
         this.spaceBarUI = this.add.sprite(centerX, centerY).play('space').setScale(1.75);
-        this.add.text(centerX, centerY + textSpacer, 'Play', smallTextConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY + textSpacer, 'Play', titleConfig).setOrigin(0.5);
 
         // Right arrow for credits
         this.rightArrowUI = this.add.sprite(gameWidth - textSpacer * 1.5, gameHeight - textSpacer * 2).play('rightArrow').setScale(1.75);
         this.creditsText = this.add.text(gameWidth - textSpacer * 1.5, gameHeight - textSpacer, 'Credits', smallTextConfig).setOrigin(0.5);
 
         // HI SCORE
-        this.add.text(gameWidth - textSpacer, textSpacer/2, 'HI SCORE: ' + highScore, smallTextConfig).setOrigin(1,0);
+        this.add.text(gameWidth - textSpacer, textSpacer/2, 'BEST: ' + highScore, titleConfig).setOrigin(1,0);
+
+        // Instructions
+        smallTextConfig.fontSize = '24px';
+        this.add.text(centerX, gameHeight - textSpacer, 'Dodge fish and avoid the sea floor!', smallTextConfig).setOrigin(0.5);
 
         // Flippy
         this.flippy = new Flippy(this, centerX, centerY + textSpacer * 2.5);

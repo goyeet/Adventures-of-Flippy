@@ -1,14 +1,12 @@
 // Name: Gordon Yee
-// Title: Flip's Undersea Adventure
-// Approximate Time Spent on Project: 18 hrs
+// Title: Adventures of Flippy
+// Approximate Time Spent on Project: 25 hrs
 // Creative Tilt Justification:
-
-
-// Background Music: Wondrous Waters by Nullhertz
-// SFX: All sound effects procured from https://mixkit.co/
-// Pixel Art Assets: Myself (Gordon Yee)
-// Texture Atlas Tutorial
-// bit.ly/42gY7CU
+//     I am really proud of my theme! I think the visual style really matches the msuic I chose.
+//     I think in terms of cool techniques, I think the way I dynamically change the spawn range 
+//     of the enemies to react to the player's Y position is cool. This way, the fish spawn closer
+//     to the player based on where the player is. Also, I think I used a clever way of using an array of strings and the random
+//     number function called "Between()" in Phaser to pick the color of the fish to spawn.
 
 'use strict';
 

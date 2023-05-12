@@ -13,7 +13,6 @@ class Credits extends Phaser.Scene {
         // start bg music
         this.bgMusic = this.sound.add('bgMusic', { volume: 0.65, loop: true });
         if (bgMusicPlaying === false) {
-            console.log('starting bgmusic from credits');
             this.bgMusic.play();
             bgMusicPlaying = true;
         }
@@ -23,25 +22,30 @@ class Credits extends Phaser.Scene {
             fontFamily: 'Impact',
             fontSize: '48px',
             color: '#FFFFFF',
-            align: 'right',
+            align: 'center',
             padding: 5,
             fixedWidth: 0
         }
-        let creditsText = this.add.text(centerX, centerY - textSpacer, 'Credits', creditsConfig).setOrigin(0.5);
-        // let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
-       
-        creditsConfig.fontSize = '36px';
-        this.leftArrowUI = this.add.sprite(textSpacer * 1.5, gameHeight - textSpacer * 2).play('leftArrow').setScale(1.75);
-        this.titleText = this.add.text(textSpacer * 1.5, gameHeight - textSpacer, 'Menu', creditsConfig).setOrigin(0.5);
 
         let smallTextConfig = {
             fontFamily: 'Impact',
             fontSize: '24px',
             color: '#FFFFFF',
-            align: 'right',
+            align: 'center',
             padding: 5,
+            lineSpacing: 5,
             fixedWidth: 0
         }
+
+        let creditsText = this.add.text(centerX, centerY - textSpacer, 'Credits', creditsConfig).setOrigin(0.5);
+        let credits = this.add.text(centerX, centerY + textSpacer, 'Programmer: Gordon Yee\nArtist: Gordon Yee\nDesigner: Gordon Yee\nSFX: https://mixkit.co/\nMusic: Wondrous Waters by Nullhertz', smallTextConfig).setOrigin(0.5);
+       
+        creditsConfig.fontSize = '36px';
+        creditsConfig.backgroundColor = '#041b36';
+        this.leftArrowUI = this.add.sprite(textSpacer * 1.5, gameHeight - textSpacer * 2).play('leftArrow').setScale(1.75);
+        this.titleText = this.add.text(textSpacer * 1.5, gameHeight - textSpacer, 'Menu', creditsConfig).setOrigin(0.5);
+
+        
 
         // set up cursor keys
         cursors = this.input.keyboard.createCursorKeys();
