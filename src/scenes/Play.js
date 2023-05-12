@@ -38,7 +38,7 @@ class Play extends Phaser.Scene {
         this.spaceBarPrompt = this.add.sprite(textSpacer, centerY + textSpacer).play('space');
 
         // set up flippy
-        this.flippy = new Flippy(this, 64, centerY, 'turtle_idle');
+        this.flippy = new Flippy(this, 64, centerY);
         this.flippy.setSize(80, 50, false); // fix bounding box
         this.flippy.setGravityY(0); // Initially set gravity to 0
         this.flippyHit = false;

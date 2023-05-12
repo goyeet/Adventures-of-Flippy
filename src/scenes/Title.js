@@ -37,8 +37,8 @@ class Title extends Phaser.Scene {
             fixedWidth: 0
         }
 
-        let title01 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5);
-        let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
+        let title01 = this.add.text(centerX, centerY - textSpacer, 'Adventures of Flippy', titleConfig).setOrigin(0.5);
+        let title02 = this.add.text(centerX, centerY - textSpacer, 'Adventures of Flippy', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
 
         // Space bar to play
         this.spaceBarUI = this.add.sprite(centerX, centerY).play('space').setScale(1.75);
@@ -50,6 +50,12 @@ class Title extends Phaser.Scene {
 
         // HI SCORE
         this.add.text(gameWidth - textSpacer, textSpacer/2, 'HI SCORE: ' + highScore, smallTextConfig).setOrigin(1,0);
+
+        // Flippy
+        this.flippy = new Flippy(this, centerX, centerY + textSpacer * 2.5);
+        this.flippy.setSize(80, 50, false); // fix bounding box
+        this.flippy.setGravityY(0); // Initially set gravity to 0
+        this.flippy.play('swim', true);     // play animation
 
         // set up cursor keys
         cursors = this.input.keyboard.createCursorKeys();
