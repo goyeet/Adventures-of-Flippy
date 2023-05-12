@@ -13,6 +13,7 @@ class Title extends Phaser.Scene {
         // start bg music
         this.bgMusic = this.sound.add('bgMusic', { volume: 0.65, loop: true });
         if (bgMusicPlaying === false) {
+            console.log('starting bgmusic from title');
             this.bgMusic.play();
             bgMusicPlaying = true;
         }
@@ -26,38 +27,52 @@ class Title extends Phaser.Scene {
             padding: 5,
             fixedWidth: 0
         }
-        let title01 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5);
-        let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
-       
-        titleConfig.fontSize = '36px';
-        this.add.text(centerX, centerY + textSpacer, 'Press [SPACE] to Start', titleConfig).setOrigin(0.5);
 
         let smallTextConfig = {
             fontFamily: 'Impact',
-            fontSize: '24px',
+            fontSize: '36px',
             color: '#FFFFFF',
             align: 'right',
             padding: 5,
             fixedWidth: 0
         }
-        this.add.text(centerX, gameHeight - textSpacer, 'Gordon Yee 2023', smallTextConfig).setOrigin(0.5);
+
+        let title01 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5);
+        let title02 = this.add.text(centerX, centerY - textSpacer, 'Flippy\'s Undersea Adventure', titleConfig).setOrigin(0.5).setTint(0x005000).setBlendMode('SCREEN');
+
+        // Space bar to play
+        this.spaceBarUI = this.add.sprite(centerX, centerY).play('space').setScale(1.75);
+        this.add.text(centerX, centerY + textSpacer, 'Play', smallTextConfig).setOrigin(0.5);
+
+        // Right arrow for credits
+        this.rightArrowUI = this.add.sprite(gameWidth - textSpacer * 1.5, gameHeight - textSpacer * 2).play('rightArrow').setScale(1.75);
+        this.creditsText = this.add.text(gameWidth - textSpacer * 1.5, gameHeight - textSpacer, 'Credits', smallTextConfig).setOrigin(0.5);
 
         // HI SCORE
         this.add.text(gameWidth - textSpacer, textSpacer/2, 'HI SCORE: ' + highScore, smallTextConfig).setOrigin(1,0);
 
         // set up cursor keys
         cursors = this.input.keyboard.createCursorKeys();
-        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);  
+        keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
 
     update() {
         this.oceanBg.tilePositionX += 1;
-        // check for SPACE bar input
+        // Start game
         if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
             this.sound.play('select', {volume: 0.8});
             this.bgMusic.stop();
             bgMusicPlaying = false;
             this.scene.start('playScene');    
+        }
+
+        // Go to credits scene
+        if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
+            this.sound.play('select', {volume: 0.8});
+            bgMusicPlaying = false;
+            this.bgMusic.stop();
+            this.scene.start('creditsScene');
         }
     }
 }

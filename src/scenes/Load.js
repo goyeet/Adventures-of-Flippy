@@ -27,9 +27,11 @@ class Load extends Phaser.Scene {
         this.load.image('pinkFish', 'fish/pinkFish.png');
         this.load.image('orangeFish', 'fish/orangeFish.png');
 
-        // load turtle texture atlas
+        // load texture atlases
         this.load.atlas('flippy', 'flippy/flippySheet.png', 'flippy/flippySheet.json');
         this.load.atlas('spaceBar', 'spaceBar/spaceBarSheet.png', 'spaceBar/spaceBarSheet.json');
+        this.load.atlas('leftArrow', 'leftArrow/leftArrowSheet.png', 'leftArrow/leftArrowSheet.json');
+        this.load.atlas('rightArrow', 'rightArrow/rightArrowSheet.png', 'rightArrow/rightArrowSheet.json');
 
         // load audio assets
         this.load.audio('bgMusic', ['audio/wondrous-waters.mp3']);
@@ -38,14 +40,7 @@ class Load extends Phaser.Scene {
         this.load.audio('impact', 'audio/sfx/mixkit-impact-of-a-blow-2150.wav');
     }
 
-    // Local Storage inspired by Paddle Parkour
     create() {
-        // check for local storage browser support
-        if (window.localStorage) {
-            console.log('Local storage supported');
-        } else {
-            console.log('Local storage not supported');
-        }
 
         // define animations
         this.anims.create({
@@ -64,6 +59,30 @@ class Load extends Phaser.Scene {
             key: 'space',
             frames: this.anims.generateFrameNames('spaceBar', {
                 prefix: 'SpaceBar',
+                start: 1,
+                end: 2,
+                suffix: '.png'
+            }),
+            frameRate: 3,
+            repeat: -1      // loop animation
+        });
+
+        this.anims.create({
+            key: 'leftArrow',
+            frames: this.anims.generateFrameNames('leftArrow', {
+                prefix: 'leftArrow',
+                start: 1,
+                end: 2,
+                suffix: '.png'
+            }),
+            frameRate: 3,
+            repeat: -1      // loop animation
+        });
+
+        this.anims.create({
+            key: 'rightArrow',
+            frames: this.anims.generateFrameNames('rightArrow', {
+                prefix: 'rightArrow',
                 start: 1,
                 end: 2,
                 suffix: '.png'

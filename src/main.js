@@ -5,6 +5,8 @@
 
 
 // Background Music: Wondrous Waters by Nullhertz
+// SFX: All sound effects procured from https://mixkit.co/
+// Pixel Art Assets: Myself (Gordon Yee)
 // Texture Atlas Tutorial
 // bit.ly/42gY7CU
 
@@ -29,7 +31,7 @@ let config = {
             }
         }
     },
-    scene: [ Load, Title, Play, /* Credits */ ],
+    scene: [ Load, Title, Play, Credits ],
     fps: { forceSetTimeOut: true, target: 60 } // Necessary to limit fps on devices with a refresh rate > 60Hz
 }
 
