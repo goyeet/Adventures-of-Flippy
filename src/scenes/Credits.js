@@ -19,7 +19,7 @@ class Credits extends Phaser.Scene {
 
         // add title screen text
         let creditsConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'Oswald',
             fontSize: '48px',
             color: '#FFFFFF',
             align: 'center',
@@ -28,7 +28,7 @@ class Credits extends Phaser.Scene {
         }
 
         let smallTextConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'Oswald',
             fontSize: '24px',
             color: '#FFFFFF',
             align: 'center',
@@ -41,11 +41,8 @@ class Credits extends Phaser.Scene {
         let credits = this.add.text(centerX, centerY + textSpacer, 'Programmer: Gordon Yee\nArtist: Gordon Yee\nDesigner: Gordon Yee\nSFX: https://mixkit.co/\nMusic: Wondrous Waters by Nullhertz', smallTextConfig).setOrigin(0.5);
        
         creditsConfig.fontSize = '36px';
-        creditsConfig.backgroundColor = '#041b36';
-        this.leftArrowUI = this.add.sprite(textSpacer * 1.5, gameHeight - textSpacer * 2).play('leftArrow').setScale(1.75);
-        this.titleText = this.add.text(textSpacer * 1.5, gameHeight - textSpacer, 'Menu', creditsConfig).setOrigin(0.5);
-
-        
+        this.leftArrowUI = this.add.sprite(textSpacer * 1.5, centerY).play('leftArrow').setScale(1.75);
+        this.titleText = this.add.text(textSpacer * 1.5, centerY + textSpacer, 'Menu', creditsConfig).setOrigin(0.5);
 
         // set up cursor keys
         cursors = this.input.keyboard.createCursorKeys();

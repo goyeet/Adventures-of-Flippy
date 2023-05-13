@@ -35,12 +35,24 @@ class Play extends Phaser.Scene {
           });
 
         // space bar hint
-        this.spaceBarPrompt = this.add.sprite(textSpacer, centerY + textSpacer).play('space');
+        this.spaceBarPrompt = this.add.sprite(centerX, centerY + textSpacer).play('space').setScale(1.75);
+
+        let smallTextConfig = {
+            fontFamily: 'Oswald',
+            fontSize: '32px',
+            color: '#FFFFFF',
+            align: 'right',
+            padding: 5,
+            fixedWidth: 0
+        }
+
+        // Instructions
+        this.instructions = this.add.text(centerX, centerY, 'Dodge fish and avoid the sea floor!', smallTextConfig).setOrigin(0.5);
 
         // set up flippy
         this.flippy = new Flippy(this, 64, centerY);
         this.flippy.setSize(80, 50, false); // fix bounding box
-        this.flippy.setGravityY(0); // Initially set gravity to 0
+        this.flippy.setGravityY(0);         // Initially set gravity to 0
         this.flippyHit = false;
         this.flippy.play('swim', true);     // play animation
 
@@ -49,20 +61,13 @@ class Play extends Phaser.Scene {
             runChildUpdate: true    // make sure update runs on group children
         });
 
-        let smallTextConfig = {
-            fontFamily: 'Impact',
-            fontSize: '48px',
-            color: '#FFFFFF',
-            align: 'right',
-            padding: 5,
-            fixedWidth: 0
-        }
+        smallTextConfig.fontSize = '48px'
         // Current SCORE
         this.currentScoreUI = this.add.text(gameWidth - textSpacer, textSpacer/2 , currentScore, smallTextConfig).setOrigin(1,0).setDepth(100);
 
         // add title screen text
         let gameOverConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'Oswald',
             fontSize: '72px',
             color: '#FFFFFF',
             align: 'center',
@@ -117,6 +122,7 @@ class Play extends Phaser.Scene {
             this.flippy.setGravityY(1000);
             // remove space bar UI
             this.spaceBarPrompt.visible = false;
+            this.instructions.visible = false;
             this.spaceBarPrompt.anims.pause();
             // wait a few seconds before spawning fish
             this.time.delayedCall(2000, () => { 
@@ -167,7 +173,6 @@ class Play extends Phaser.Scene {
                 this.scene.start('creditsScene');
             }
         }
-
     }
 
     collision() {

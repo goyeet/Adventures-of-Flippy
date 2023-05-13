@@ -1,21 +1,23 @@
-// Load scene inspired by Paddle Parkour
+// https://phasergames.com/using-google-fonts-phaser/
+WebFontConfig = {
+    google: { families: ["Oswald"] }
+    };
+    (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+    })();
+
 class Load extends Phaser.Scene {
     constructor() {
         super('loadScene');
     }
 
     preload() {
-        // loading bar
-        // see: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/loader/
-        /* let loadingBar = this.add.graphics();
-        this.load.on('progress', (value) => {
-            loadingBar.clear();                                 // reset fill/line style
-            loadingBar.fillStyle(0xFFFFFF, 1);                  // (color, alpha)
-            loadingBar.fillRect(0, centerY, gameWidth * value, 5);  // (x, y, w, h)
-        });
-        this.load.on('complete', () => {
-            loadingBar.destroy();
-        }); */
 
         this.load.path = './assets/';
         

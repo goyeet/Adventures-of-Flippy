@@ -19,7 +19,7 @@ class Title extends Phaser.Scene {
 
         // add title screen text
         let titleConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'Oswald',
             fontSize: '48px',
             color: '#FFFFFF',
             align: 'right',
@@ -28,12 +28,11 @@ class Title extends Phaser.Scene {
         }
 
         let smallTextConfig = {
-            fontFamily: 'Impact',
+            fontFamily: 'Oswald',
             fontSize: '36px',
             color: '#FFFFFF',
             align: 'right',
             padding: 5,
-            backgroundColor:'#041b36',
             fixedWidth: 0
         }
 
@@ -45,20 +44,19 @@ class Title extends Phaser.Scene {
         this.add.text(centerX, centerY + textSpacer, 'Play', titleConfig).setOrigin(0.5);
 
         // Right arrow for credits
-        this.rightArrowUI = this.add.sprite(gameWidth - textSpacer * 1.5, gameHeight - textSpacer * 2).play('rightArrow').setScale(1.75);
-        this.creditsText = this.add.text(gameWidth - textSpacer * 1.5, gameHeight - textSpacer, 'Credits', smallTextConfig).setOrigin(0.5);
+        this.rightArrowUI = this.add.sprite(gameWidth - textSpacer * 1.5, centerY).play('rightArrow').setScale(1.75);
+        this.creditsText = this.add.text(gameWidth - textSpacer * 1.5, centerY + textSpacer, 'Credits', smallTextConfig).setOrigin(0.5);
 
         // HI SCORE
         this.add.text(gameWidth - textSpacer, textSpacer/2, 'BEST: ' + highScore, titleConfig).setOrigin(1,0);
 
         // Instructions
         smallTextConfig.fontSize = '24px';
-        this.add.text(centerX, gameHeight - textSpacer, 'Dodge fish and avoid the sea floor!', smallTextConfig).setOrigin(0.5);
 
         // Flippy
         this.flippy = new Flippy(this, centerX, centerY + textSpacer * 2.5);
         this.flippy.setSize(80, 50, false); // fix bounding box
-        this.flippy.setGravityY(0); // Initially set gravity to 0
+        this.flippy.setGravityY(0);         // Initially set gravity to 0
         this.flippy.play('swim', true);     // play animation
 
         // set up cursor keys
